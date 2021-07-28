@@ -1,14 +1,10 @@
-function calculateTotal(items) {
-return items.map(calculateNewTotal)
+const calculateTotal = items => items.map(calculateNewTotal)
 
+const calculateNewTotal = item => {
+  let rawTotal = item.price * (1 - item.discount) * item.quantity
+  let total = parseInt(rawTotal * 100) / 100
+
+  return {...item, total}
 }
-
-function calculateNewTotal(item){
-let total = item.price *(1 - item.discount) * item.quantity
-total = parseInt(total * 100) / 100
-item.total = total
-return item
-}
-
 
 module.exports = calculateTotal
